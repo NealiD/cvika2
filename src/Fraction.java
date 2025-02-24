@@ -8,7 +8,10 @@ public class Fraction {
         this.d = d / gcd;
         this.n = n / gcd;
     }
-
+    public static Fraction parse(String s)
+    {
+        return new Fraction(1,1);
+    }
     @Override
     public String toString() {
         return n+"/"+d;

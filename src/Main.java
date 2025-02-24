@@ -1,6 +1,9 @@
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
@@ -20,9 +23,17 @@ public class Main {
     }
     public static ExamRecord[] readInputFile(Path path)
     {
-        double x=5;
-        x = Math.sqrt(6);
-        return new ExamRecord[0];
+        List<String> lines = Files.readAllLines(path);
+        List<ExamRecord> resultList = new ArrayList<>();
+        for(String line : lines)
+        {
+            String[] split= line.split("[:=;]");
+            resultList.add(new ExamRecord(
+                    Fraction.parse(split[1]),
+                    split[0]
+                        ));
+        }
+        return resultList.toArray(new ExamRecord[0]);
     }
 
 }
