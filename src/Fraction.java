@@ -2,12 +2,16 @@ public class Fraction {
     private long n;
     private long d;
 
-    public Fraction(long n, long d)
+    public Fraction(long d, long n)
     {
-        this.n = n;
-        this.d = d;
-        long gcd = gcd(n, d);
+        long gcd = Utils.gcd(d, n);
+        this.d = d / gcd;
+        this.n = n / gcd;
     }
 
+    @Override
+    public String toString() {
+        return n+"/"+d;
+    }
 
 }
